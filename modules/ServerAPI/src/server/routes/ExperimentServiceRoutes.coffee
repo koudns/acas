@@ -76,7 +76,7 @@ exports.experimentByCodename = (req, resp) ->
 		fullObjectFlag = "with=fullobject"
 		if req.query.fullObject
 			baseurl += "?#{fullObjectFlag}"
-		if req.user? && config.all.server.project.roles.enable
+		if req.user?
 			serverUtilityFunctions.getRestrictedEntityFromACASServerInternal baseurl, req.user.username, "metadata", "experiment metadata", (statusCode, json) =>
 				#if expt is deleted, need to check if user has privs to view deleted experiments
 				if json.codeName?
